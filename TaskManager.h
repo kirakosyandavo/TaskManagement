@@ -3,6 +3,17 @@ class TaskManager{
  vector<User*>m_users;
  vector<Task*>m_all_tasks;
 	public:TaskManager()=default;
+                 ~TaskManager(){
+			for(int i=0;i<m_users.size();i++){
+				delete m_users[i];
+			} 
+			 m_users.clear();
+			 for(int i=0;i<m_all_tasks.size();i++){
+				 delete m_all_tasks[i];
+			 }
+			 m_all_tasks.clear();
+		 }
+			 
 	       TaskManager(const TaskManager & other){
 		       for(int i=0;i<other.m_users.size();i++){
 			       m_users.push_back(new User(*(other.m_users[i])));
