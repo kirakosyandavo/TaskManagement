@@ -97,9 +97,7 @@ Task& operator++(){
     if(m_status==Stat::In_Progress){
         m_status=Stat::Urg;
     }
-    if(m_status==Stat::Urg){
-        m_status=Stat::Not_Started;
-    } 
+    
     return *this;
 }
 friend ostream& operator<<( ostream & print,const Task& other){
