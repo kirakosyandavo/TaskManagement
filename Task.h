@@ -125,10 +125,11 @@ Task operator++(int){
       ++(*this);
       return obj; 
 }
-bool operator==(const Task& other){
+bool operator==(const Task& other)const{
     if(m_task_id==other.m_task_id){
         return true;
     }
+	else return false;
 }  
 
 void display()const{
