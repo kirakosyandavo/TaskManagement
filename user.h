@@ -17,6 +17,8 @@ public:
     is_logged=other.is_logged;
     }
     User(const User& other){
+	m_name=other.m_name;
+	is_logged=other.is_logged;    
         m_id=other.m_id;
         m_password=other.m_password;
         for(int i=0;i<other.m_tasks.size();i++){
