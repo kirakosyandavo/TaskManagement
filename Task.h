@@ -58,7 +58,8 @@ return give;
 
 class Task {
 private:
-     static int m_task_id;
+    int m_task_id;
+    static int s_task_id_gen; 
     int m_uid;  
     string m_title;
     string m_description;
@@ -72,10 +73,10 @@ public:
     Task():m_uid{0},m_title{""},m_description{""},m_deadline{""},m_category{""},m_priority{Prio::Low},m_status{Stat::Not_Started},m_completed{0}{
         m_task_id++;
     }
-    Task(const int task_id,const int uid,const string& title, const string& description, const string& deadline,Stat status, Prio priority, const string& category, bool completed):
-	    m_uid(uid),m_title(title),m_description(description),m_deadline(deadline),m_status(status),m_priority(priority),m_category(category),m_completed(completed){m_task_id=task_id;}
-    Task(const Task& other):m_uid(other.m_uid),m_title(other.m_title),m_description(other.m_description),m_deadline(other.m_deadline),m_status(other.m_status),m_priority(other.m_priority),m_category(other.m_category),m_completed(other.m_completed){m_task_id=other.m_task_id;}
-   Task(Task&& other)noexcept: m_uid(other.m_uid),m_title(move(other.m_title)),m_description(move(other.m_description)),m_deadline(move(other.m_deadline)),m_status(other.m_status),m_priority(other.m_priority),m_category(move(other.m_category)),m_completed(other.m_completed) {m_task_id=other.m_task_id;}
+    Task(const int uid,const string& title, const string& description, const string& deadline,Stat status, Prio priority, const string& category, bool completed):
+	    m_uid(uid),m_title(title),m_description(description),m_deadline(deadline),m_status(status),m_priority(priority),m_category(category),m_completed(completed){m_task_id=++s_task_id_gen;}
+    Task(const Task& other):m_uid(other.m_uid),m_title(other.m_title),m_description(other.m_description),m_deadline(other.m_deadline),m_status(other.m_status),m_priority(other.m_priority),m_category(other.m_category),m_completed(other.m_completed){m_task_id=++s_task_id_gen;}
+   Task(Task&& other)noexcept: m_uid(other.m_uid),m_title(move(other.m_title)),m_description(move(other.m_description)),m_deadline(move(other.m_deadline)),m_status(other.m_status),m_priority(other.m_priority),m_category(move(other.m_category)),m_completed(other.m_completed) {m_task_id=++s_task_id_gen;}
  ~Task()=default;
 
 void set_Status(Stat status){
@@ -149,5 +150,5 @@ void editTask(int new_id,int new_uid,const string& newTitle, const string& newDe
 	m_category = newCategory;
 }
 }; 
-int Task::m_task_id = 0;
+int Task::s_task_id_gen= 0;
 
