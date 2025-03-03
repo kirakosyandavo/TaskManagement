@@ -8,11 +8,53 @@ using namespace std;
     High=2,
     Urgent=99,
  };
+istream&(istream& give,Prio p){
+  int a;
+  give>>a;
+  switch(a){
+case static_cast<int>(Prio::Low):
+	a=Prio::Low;
+         break
+case static_cast<int>(Prio::Mid):
+	a=Prio::Mid;
+	break;
+case static_cast<int>(Prio::High):
+	a=Prio::High;
+	break;
+case static_cast<int>(Prio Urgent):
+	a=Prio::Urgent;
+	break;
+default:cout<<"this is invalid";
+	  break;
+  }
+return give;
+}	
+
+ 
 enum class Stat{
 	Not_Started=0,
 	In_Progress=1,
 	Urg=99,
 };
+istream&(istream& give,Stat s){
+  int a;
+  give>>a;
+  switch(a){
+case static_cast<int>(Stat::Not_Started):
+	a=Stat::Not_Started;
+         break
+case static_cast<int>(Stat::In_Progress):
+	a=Stat::In_Progress;
+	break;
+case static_cast<int>(Stat::Urg):
+	a=Stat::Urg;
+	break;
+default:cout<<"this is invalid";
+	  break;
+  }
+return give;
+}
+
 
 class Task {
 private:
@@ -75,6 +117,7 @@ friend istream& operator>>( istream& give, Task& other){
         give>>other.m_task_id>>other.m_uid>>other.m_title>>other.m_description;
         give>>other.m_deadline>>other.m_category;
         give>>other.m_completed;
+	give>>other.m_priority>>other.m_status;
         return give;
     
      }
