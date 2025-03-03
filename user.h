@@ -30,7 +30,7 @@ operator bool(){
 friend ostream& operator<<( ostream& print,const User& other){
     print<<other.m_id<<endl<<other.m_name<<endl<<other.m_password;
     for(int i=0;i<other.m_tasks.size();i++){
-        print<<other.m_tasks[i];
+        print<<*(other.m_tasks[i]);
     }
     print<<other.is_logged;
     return print;
