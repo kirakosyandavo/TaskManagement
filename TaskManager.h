@@ -42,8 +42,8 @@ class TaskManager{
 			  User*user=new User(m_users.size()+1,name,password);
 			  m_users.push_back(user);
 		  }
-		  void add_task( int task_id,int uid,string title,string description,string deadline,Stat status,Prio priority,string category,bool completed ){
-			  Task*task=new Task( task_id, uid, title, description, deadline, status, priority, category, completed );
+		  void add_task( int uid,string title,string description,string deadline,Stat status,Prio priority,string category,bool completed ){
+			  Task*task=new Task(uid, title, description, deadline, status, priority, category, completed );
 			  m_all_tasks.push_back(task);
 		  }
                  void  edit_task(int task_id, int uid,string title, string description, string deadline, Stat status,Prio priority,string category,bool completed ){
