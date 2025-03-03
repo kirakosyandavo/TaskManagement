@@ -71,7 +71,7 @@ private:
    
 public:
     Task():m_uid{0},m_title{""},m_description{""},m_deadline{""},m_category{""},m_priority{Prio::Low},m_status{Stat::Not_Started},m_completed{0}{
-        m_task_id++;
+        m_task_id=++s_task_id_gen;
     }
     Task(const int uid,const string& title, const string& description, const string& deadline,Stat status, Prio priority, const string& category, bool completed):
 	    m_uid(uid),m_title(title),m_description(description),m_deadline(deadline),m_status(status),m_priority(priority),m_category(category),m_completed(completed){m_task_id=++s_task_id_gen;}
