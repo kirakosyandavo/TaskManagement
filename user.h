@@ -60,7 +60,14 @@ User& operator=(const User& other){
     } 
     return *this;
 }
-    ~User();
+    ~User(){
+        for(int i=0;i<m_tasks.size();i++){
+              delete m_tasks[i];
+	} 
+	    m_tasks.clear();
+	    
+	    
+    }
     int get_id(){
 	    return m_id;
     }
