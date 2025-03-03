@@ -109,6 +109,7 @@ User& operator=(const User& other){
                               return m_tasks[i];
 		    }
 	    }
+	    return nullptr;
     }  
 
 
