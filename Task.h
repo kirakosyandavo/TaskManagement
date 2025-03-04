@@ -8,21 +8,21 @@ using namespace std;
     High=2,
     Urgent=99,
  };
-istream&(istream& give,Prio p){
+istream& operator>>(istream& give,Prio &p){
   int a;
   give>>a;
   switch(a){
 case static_cast<int>(Prio::Low):
-	a=Prio::Low;
-         break
+	p=Prio::Low;
+         break;
 case static_cast<int>(Prio::Mid):
-	a=Prio::Mid;
+	p=Prio::Mid;
 	break;
 case static_cast<int>(Prio::High):
-	a=Prio::High;
+	p=Prio::High;
 	break;
-case static_cast<int>(Prio Urgent):
-	a=Prio::Urgent;
+case static_cast<int>(Prio::Urgent):
+	p=Prio::Urgent;
 	break;
 default:cout<<"this is invalid";
 	  break;
@@ -36,18 +36,18 @@ enum class Stat{
 	In_Progress=1,
 	Urg=99,
 };
-istream&(istream& give,Stat s){
+istream& operator>>(istream& give,Stat& s){
   int a;
   give>>a;
   switch(a){
 case static_cast<int>(Stat::Not_Started):
-	a=Stat::Not_Started;
-         break
+	s=Stat::Not_Started;
+         break;
 case static_cast<int>(Stat::In_Progress):
-	a=Stat::In_Progress;
+	s=Stat::In_Progress;
 	break;
 case static_cast<int>(Stat::Urg):
-	a=Stat::Urg;
+	s=Stat::Urg;
 	break;
 default:cout<<"this is invalid";
 	  break;
@@ -85,6 +85,7 @@ void set_Status(Stat status){
 void set_Priority(Prio priority){
 	m_priority=priority;
 }
+
 bool operator<(const Task& other){
    if(static_cast<int>(m_priority)<static_cast<int>(other.m_priority)){
     return true;
@@ -150,5 +151,6 @@ void editTask(int new_id,int new_uid,const string& newTitle, const string& newDe
 	m_category = newCategory;
 }
 }; 
-int Task::s_task_id_gen= 0;
+int Task::s_task_id_gen=0;
+
 
